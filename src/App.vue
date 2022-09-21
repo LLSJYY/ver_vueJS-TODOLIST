@@ -2,6 +2,7 @@
 <script setup>
   import { ref } from 'vue';
   const todos = ref([{}]);
+  
   function TodoInput(event){
     todos.value.push( {
       title:event.target.value,
@@ -14,7 +15,9 @@
 
 <template>
   <input @keyup.enter="TodoInput"  placeholder="What needs to be done?">
-
+  <ul>
+    <li v-for="item of todos" :key="item.id">{{item.title}}</li>
+  </ul>
 </template>
 
 <style>
